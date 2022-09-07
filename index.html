@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="area">
+        <img id="tank" src="./img/tank-1.png">
+        <img id="boom" src="./img/boom.png">
+    </div>
+    <div class="event">
+        <button type="button" onclick="Move_up()">Up</button>
+        <div>
+            <button type="button" onclick="Move_left()">Left</button>
+            <button type="button" onclick="Move_right()">Right</button>
+        </div>
+        <button type="button" onclick="Move_down()">Down</button>
+    </div>
+
+</body>
+
+<script>
+
+    let pos_tank = document.getElementById("tank").style
+
+    let pos_boom = document.getElementById("boom").style
+    let boomTop = 300
+    let boomLeft = 200
+
+    let a = 100
+    let b = 50
+
+    function Incre_a(){
+        a += 10
+    }
+
+    function Incre_b(){
+        b += 10
+    }
+
+    function Decre_a(){
+        a -= 10
+    }
+
+    function Decre_b(){
+        b -= 10
+    }
+
+    function Move_up(){
+        Decre_a()
+        // console.log('a = ' , a)
+        document.getElementById("tank").style["top"] = a + "px"
+        console.log('a top: ' + a, '   b la ' + b,'   top: '+ pos_tank.top)
+        Check()
+    }
+
+    function Move_down(){
+        Incre_a()
+        document.getElementById("tank").style["top"] = a + "px"
+        console.log('a top: ' + a, '   b la ' + b,'   top: '+ pos_tank.top)
+        Check()
+    }
+
+    function Move_left(){
+        Decre_b()
+        document.getElementById("tank").style["left"] = b + "px"
+        console.log('a top: ' + a, '   b la ' + b,'   top: '+ pos_tank.left)
+        Check()
+    }
+
+    function Move_right(){
+        Incre_b()
+        document.getElementById("tank").style["left"] = b + "px"
+        console.log('a top: ' + a, '   b la ' + b,'   top: '+ pos_tank.left)
+        Check()
+    }
+
+    function Check(){
+
+        if(((a + 50) >= boomTop && (a) <= (boomTop + 50)) && ((b + 50) >= boomLeft) && (b) <= (boomLeft + 50)){
+            document.getElementById("tank").src = "./img/explosion.png"
+            document.getElementById("boom").src = "./img/explosion.png"
+        }
+    }
+</script>
+
+</html>
